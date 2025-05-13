@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './newuser.css'; // Importa o CSS externo
+import './newuser.css'; 
 import logo from '../../assets/imgs/logowhite.png';
-import infoIcon from '../../assets/imgs/info circle.png'; // certifique-se do caminho correto
+import infoIcon from '../../assets/imgs/info circle.png'; 
 
 function SignUp() {  
 
@@ -41,6 +41,7 @@ function SignUp() {
 
 
   return (
+    <> 
     <div className="login-box">
       <img src={logo} alt="Logo Senai Notes" className="logo" />
       <p className="subtitle">Create Your Account</p>
@@ -67,6 +68,9 @@ function SignUp() {
         Already have an account? <a href="#">Login</a>
       </p>
     </div>
+
+  </>
+  
   );
 }
 
