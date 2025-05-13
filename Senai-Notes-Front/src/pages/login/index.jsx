@@ -10,7 +10,7 @@
 
 
   <div class="login-box">
-    <img src="../../assets/imgs/logo.png" alt="Logo Senai Notes" class="logo">
+    <img src="../../assets/imgs/logowhite.png" alt="Logo Senai Notes" class="logo">
     <p class="subtitle">Welcome to Note</p>
     <p class="instruction">Please log in to continue</p>
 
