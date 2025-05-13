@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './newuser.css'; // Importa o CSS externo
 import logo from '../../assets/imgs/logowhite.png';
 import infoIcon from '../../assets/imgs/info circle.png'; // certifique-se do caminho correto

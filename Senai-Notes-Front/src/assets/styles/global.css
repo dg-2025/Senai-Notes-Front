@@ -1,0 +1,127 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #1a1a1a;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container padrão para todas as telas */
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 0 1px #e0e0e0;
+}
+
+/* Logo */
+.logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Títulos e textos */
+h1 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.instruction {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Botão padrão */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #3d5afe;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #304ffe;
+}
+
+/* Texto com link */
+.link-text {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+}
+
+.link-text a {
+  color: #3d5afe;
+  text-decoration: none;
+}
+
+/* Dica com ícone */
+.note {
+  display: inline-flex;
+  font-size: 11px;
+  color: #777;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.note img {
+  margin-right: 5px;
+  height: 15px;
+  width: 15px;
+}
+
+.note span {
+  margin-top: 1px;
+}
