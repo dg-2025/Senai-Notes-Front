@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Obama Presidente",
-      "email": "tubaraodenike@email.comjson ",
+      "email": "tubaraodenike@email.com",
       "password": "12345678"
     },
     {
@@ -11,6 +11,36 @@
       "name": "teste",
       "email": "teste@email.com",
       "password": "12345678"
+    },
+    {
+      "id": "3aa1",
+      "email": "email@email.com",
+      "password": "0987654321"
+    },
+    {
+      "id": "7bfa",
+      "email": "email@email.com",
+      "password": "0987654321"
+    },
+    {
+      "id": "341c",
+      "email": "email@email.com",
+      "password": "0987654321"
+    },
+    {
+      "id": "769e",
+      "email": "email@email.com",
+      "password": "0987654321"
+    },
+    {
+      "id": "1503",
+      "email": "powpow@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": "ca93",
+      "email": "email@email.com",
+      "password": "1234567890"
     }
   ]
 }

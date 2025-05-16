@@ -15,7 +15,9 @@ function ForgotPassword() {
 
       <form>
         <label htmlFor="email">Email Address</label>
-        <input
+        <input className="email"
+          value={email}
+          onChange={event => setEmail (event.target.value)}
           type="email"
           id="email"
           placeholder="email@example.com"

@@ -6,16 +6,10 @@ import infoIcon from '../../assets/imgs/info circle.png';
 function SignUp() {  
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+
 
   const  OnNewUserClick = async () => {
-
-    if(name == "") {
-        alert ("Preencha o nome do usuário.")
-        return;
-    }
 
     if(email == "") {
         alert ("Preencha o e-mail.")
@@ -26,21 +20,63 @@ function SignUp() {
         alert ("Preencha a senha.")
         return;
     }
-    if (confirmpassword == "") {
-        alert ("Preencha a confirmção de senha")
-    }
 
-    if (password != confirmpassword) {
+    if (password != password) {
         alert ("As senhas não conferem")
         return;
     }
 
+  let response = await fetch("http://localhost:3000/users", {
 
-}
+  headers: {
+    "Content-Type": "application/json"
+
+  }, 
+  method: "POST", 
+  body: JSON.stringify({
+    email: email,
+    password: password
+  })
 
 
+})
 
-  return (
+  if (response.ok == true) {
+
+      alert("Cadastro Realizado com sucesso");
+
+      console.log(response);
+
+      let json = await response.json();
+
+      let token = json.accessToken;
+      let userId = json.user.id;
+
+      console.log("Token" + token);
+
+      //LOCALSTORAGE
+
+      localStorage.setItem("meuToken", token);
+      localStorage.setItem("meuId", userId)
+
+      window.location.href = "/login";
+
+    } else {
+
+      if (response.status == 401) {
+
+        alert("Credenciais Incorretas. Tente Novamente.");
+
+      } else {
+
+        alert("Erro inesperado aconteceu, caso persista contate os administradores");
+
+      }
+    }
+  }
+
+
+   return (
     <> 
     <div className="login-box">
       <img src={logo} alt="Logo Senai Notes" className="logo" />
@@ -51,21 +87,21 @@ function SignUp() {
 
       <form>
         <label htmlFor="email">Email Address</label>
-        <input type="email" id="email" placeholder="email@example.com" required />
+        <input className="email" value={email} onChange={event => setEmail(event.target.value)} type="email" id="email" placeholder="email@example.com" required />
 
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" required />
+        <input className="password" value={password} onChange={event => setPassword(event.target.value)} type="password" id="password" required />
 
         <div className="note">
           <img src={infoIcon} alt="Info Icon" />
           <span>At least 8 characters</span>
         </div>
 
-        <button type="submit">Login</button>
+        <button className="submit" onClick={() => OnNewUserClick()} type="button">Sign up</button>
       </form>
 
       <p className="login">
-        Already have an account? <a href="#">Login</a>
+        Already have an account? <a href="/login">Login</a>
       </p>
     </div>
 
@@ -73,5 +109,9 @@ function SignUp() {
   
   );
 }
+
+
+
+ 
 
 export default SignUp

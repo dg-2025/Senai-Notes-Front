@@ -1,13 +1,46 @@
 import React, { useState } from 'react';
 import './login.css';
 import logo from '../../assets/imgs/logowhite.png'; // ajuste o caminho se necessário
+import '../../assets/styles/global.css'
 
 function Login() {
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+
+  const loginClick = async () => {
+
+    let response = await fetch("http://localhost:3000", {
+
+      headers: {
+        "Content-Type": "application/json"
+
+      },
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+
+    })
+
+    if (response.ok == true) {
+
+      alert("Login Realizado Com Sucesso!");
+
+      console.log(response);
+
+      let json = await response.json()
+      
+      let token = json.acessToken;
+      let userId = json.user.id;
+
+      console.log ("Token" + token);
+
+      localStorage.setItem("meuToken", token)
+      localStorage.setItem("meuId", userId)
+    }
+  }
 
 
 
@@ -23,18 +56,18 @@ function Login() {
 
       <form>
         <label htmlFor="email">Email Address</label>
-        <input type="email" id="email" placeholder="email@example.com" required />
+        <input className="email" value={email} onChange={event => setEmail(event.target.value)} type="email" id="email" placeholder="email@example.com" required />
 
         <label htmlFor="password">
-          Password <a href="#" className="forgot">Forgot</a>
+          Password <a href="/forgotpassword" className="forgot">Forgot</a>
         </label>
-        <input type="password" id="password" required />
+        <input className="password" value={password} onChange={event => setPassword(event.target.value)} type="password" id="password" required />
 
-        <button type="submit">Login</button>
+        <button className="submit" onClick={() => loginClick}>Login</button>
       </form>
 
       <p className="signup">
-        No account yet? <a href="#">Sign Up</a>
+        No account yet? <a href="/signup">Sign Up</a>
       </p>
     </div>
 
