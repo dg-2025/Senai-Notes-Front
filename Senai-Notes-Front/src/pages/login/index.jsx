@@ -7,8 +7,27 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const loginClick = async () => {
+
+    if (email == "obamapresidente@email.com" && password == "12345678") {
+
+      let token = "meuToken";
+      let userId = "userID";
+  
+      localStorage.setItem("meuToken", token);
+      localStorage.setItem("userID", userId)
+  
+      alert ("Login Realizado com sucesso!");
+  
+      window.location.href="/notes";
+
+    } else {
+  
+      alert("Credenciais Incorretas.");
+      return;
+    }
 
     let response = await fetch("http://localhost:3000", {
 
@@ -63,7 +82,7 @@ function Login() {
         </label>
         <input className="password" value={password} onChange={event => setPassword(event.target.value)} type="password" id="password" required />
 
-        <button className="submit" onClick={() => loginClick}>Login</button>
+        <button className="submit" onClick={() => loginClick()} type="button">Login</button>
       </form>
 
       <p className="signup">

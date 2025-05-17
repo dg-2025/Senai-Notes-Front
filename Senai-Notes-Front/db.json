@@ -41,6 +41,16 @@
       "id": "ca93",
       "email": "email@email.com",
       "password": "1234567890"
+    },
+    {
+      "id": "0f36",
+      "email": "front@email.com",
+      "password": "frontdomina"
+    },
+    {
+      "id": "a5bc",
+      "email": "front@email.com",
+      "password": "frontdomina"
     }
   ]
 }

@@ -42,6 +42,8 @@ function App() {
      </Routes>
      
      </BrowserRouter>
+
+     {/* <ResetPassword /> */}
     </>
   );
 }
