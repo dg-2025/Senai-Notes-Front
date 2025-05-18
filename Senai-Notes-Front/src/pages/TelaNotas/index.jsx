@@ -1,5 +1,15 @@
 import './style.css';
 import '../../assets/styles/global.css';
+import Archive from '../../assets/ImgNotas/Archive.svg'
+import Home from '../../assets/ImgNotas/Home.svg'
+import Lupa from '../../assets/ImgNotas/Lupa.svg'
+import SenaiNotes from '../../assets/ImgNotas/Senai Notes.svg'
+import Setting from '../../assets/ImgNotas/Setting.svg'
+import Vector from '../../assets/ImgNotas/Vector.svg'
+
+
+
+
 
 function TelaNotas() {
     return (
@@ -11,15 +21,15 @@ function TelaNotas() {
                         <div className="menu-lateral">
                             <div className="cabecalho-menu">
                                 <h1 className="titulo-menu">
-                                    <img src="../global/imagens/Senai Notes.svg" alt="Logo" />
+                                    <img src={SenaiNotes} />
                                     Senai Notes
                                 </h1>
                                 <button className="button-lateral">
-                                    <img src="../global/imagens/Home.svg" alt="Ícone Home" />
+                                    <img src={Home} />
                                     All Notes
                                 </button>
                                 <button className="button-lateral">
-                                    <img src="../global/imagens/Archive.svg" alt="Ícone Archive" />
+                                    <img src={Archive} />
                                     Archived Notes
                                 </button>
                             </div>
@@ -31,15 +41,16 @@ function TelaNotas() {
                             </div>
                         </div>
 
+                        {/* ÁREA PRINCIPAL */}
                         <div className="tela-container">
                             <div className="cabecalho-topo">
                                 <div className="topo-notas">
                                     <h1>All Notes</h1>
                                     <div className="painel-pesquisa">
-                                        <img src="../global/imagens/lupa.svg" alt="Lupa" />
+                                        <img src={Lupa} />
                                         <input type="text" placeholder="Search by title, content, or tags…" />
-                                        <img src="../global/imagens/Setting.svg" alt="Configurações" />
-                                        <img src="../global/imagens/Vector.svg" alt="Ordenar" />
+                                        <img src={Setting}/>
+                                        <img src={Vector} />
                                     </div>
                                 </div>
                             </div>
