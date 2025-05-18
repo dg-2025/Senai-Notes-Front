@@ -1,0 +1,111 @@
+/* === LISTA DE NOTAS === */
+.notas-root .secao-lateral {
+  width: 20vw;
+  background-color: #fafafa;
+  border-right: 1px solid #ccc;
+}
+
+.notas-root .caixa-botoes-config {
+  padding: 20px;
+}
+
+.notas-root .cartao-config {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.notas-root .cartao-config button {
+  width: 100%;
+  height: 55px;
+  font-size: 14px;
+  font-family: 'Inter';
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: left;
+  padding-left: 10px;
+  background-color: white;
+}
+.notas-root .linha-divisoria {
+  width: 90%;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 10px auto;
+}
+
+
+.notas-root .cartao-config button:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* === DETALHES (CENTRO) === */
+.notas-root .opcoes-detalhe {
+  width: 55%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.notas-root .caixa-opcoes {
+  background-color: white;
+  border: none;
+  padding: 20px;
+  width: 100%;
+}
+
+.notas-root .caixa-opcoes h2 {
+  font-family: 'inter';
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.notas-root .caixa-opcoes p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.notas-root .botao-opcao {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.notas-root .botao-opcao button {
+  width: 100%;
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.notas-root .botao-opcao p {
+  font-size: 12px;
+  margin: 0;
+  color: #444;
+}
+
+.notas-root .botao-aplicar {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+
+/* === AÇÕES (DIREITA) === */
+.notas-root .acoes-nota {
+  width: 18vw;
+  background-color: white;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}

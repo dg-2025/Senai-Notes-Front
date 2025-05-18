@@ -1,11 +1,15 @@
+ /* === FONTES === */
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+/* GLOBAL YAN */
 /* Reset básico */
-* {
+.global-root * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+.global-root body {
   background-color: #f4f6f8;
   color: #1a1a1a;
   font-family: Arial, sans-serif;
@@ -16,7 +20,7 @@ body {
 }
 
 /* Container padrão para todas as telas */
-.container {
+.global-root .container {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
@@ -26,44 +30,44 @@ body {
 }
 
 /* Logo */
-.logo {
+.global-root .logo {
   width: 120px;
   height: auto;
   margin-bottom: 10px;
 }
 
 /* Títulos e textos */
-h1 {
+.global-root h1 {
   font-size: 22px;
   margin-bottom: 5px;
   color: #1a1a1a;
 }
 
-.subtitle {
+.global-root .subtitle {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-.instruction {
+.global-root .instruction {
   font-size: 12px;
   color: #666;
   margin-bottom: 20px;
 }
 
 /* Formulário */
-form {
+.global-root form {
   text-align: left;
 }
 
-label {
+.global-root label {
   display: block;
   margin-top: 15px;
   font-size: 14px;
   color: #333;
 }
 
-input {
+.global-root input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -73,12 +77,12 @@ input {
   color: #000;
 }
 
-input::placeholder {
+.global-root input::placeholder {
   color: #aaa;
 }
 
 /* Botão padrão */
-button {
+.global-root button {
   width: 100%;
   margin-top: 20px;
   padding: 10px;
@@ -90,25 +94,25 @@ button {
   font-weight: bold;
 }
 
-button:hover {
+.global-root button:hover {
   background-color: #304ffe;
 }
 
 /* Texto com link */
-.link-text {
+.global-root .link-text {
   margin-top: 15px;
   font-size: 13px;
   color: #555;
   text-align: center;
 }
 
-.link-text a {
+.global-root .link-text a {
   color: #3d5afe;
   text-decoration: none;
 }
 
 /* Dica com ícone */
-.note {
+.global-root .note {
   display: inline-flex;
   font-size: 11px;
   color: #777;
@@ -116,12 +120,207 @@ button:hover {
   align-items: center;
 }
 
-.note img {
+.global-root .note img {
   margin-right: 5px;
   height: 15px;
   width: 15px;
 }
 
-.note span {
+.global-root .note span {
   margin-top: 1px;
+}
+ /* GLOBAL DANIEL  */
+
+
+/* === RESET GERAL === */
+.global-tela * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.global-tela body {
+  font-family: 'Inter';
+  background-color: #fafafa;
+  color: #111;
+}
+
+.global-tela .tela {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* === MENU LATERAL === */
+.global-tela .menu-lateral {
+  width: 17vw;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+}
+
+.global-tela .cabecalho-menu {
+  height: 20vh;
+  padding-left: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+}
+
+.global-tela .cabecalho-menu h1 {
+  display: flex;
+  align-items: center;
+  padding-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 30px;
+  font-family: 'K2D';
+  font-weight: 400;
+  color: black;
+}
+
+.global-tela .cabecalho-menu h1 img {
+  width: 28px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.global-tela .button-lateral {
+  display: flex;
+  margin-bottom: 5px;
+  width: 15vw;
+  height: 6vh;
+  font-size: 18px;
+  font-family: 'Inter';
+  font-weight: 400;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  justify-content: flex-start;
+  color: black;
+  padding-left: 10px;
+}
+
+.global-tela .button-lateral:hover {
+  background-color: #f0f0f0;
+}
+
+.global-tela .button-lateral img {
+  display: flex;
+  width: 25px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.global-tela .tags {
+  width: 15vw;
+  height: 60vh;
+  margin-top: 20px;
+  margin-left: 1vw;
+  background-color: #ffffff;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top: 1px solid #ccc;
+}
+
+.global-tela .tags h1 {
+  display: flex;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 400;
+  color: rgb(70, 70, 70);
+}
+
+.global-tela .tag {
+  display: flex;
+  flex-direction: column;
+}
+
+.global-tela .tag-button {
+  display: flex;
+  margin-bottom: 5px;
+  width: 14vw;
+  height: 6vh;
+  font-size: 18px;
+  font-family: 'Inter';
+  font-weight: 400;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  justify-content: flex-start;
+  color: black;
+  padding-left: 10px;
+}
+
+.global-tela .tag-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* === CONTEÚDO PRINCIPAL === */
+.global-tela .tela-container {
+  display: flex;
+  flex-direction: column;
+  width: 83vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+/* === CABEÇALHO DO TOPO === */
+.global-tela .cabecalho-topo {
+  display: flex;
+  align-items: center;
+  height: 12vh;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.global-tela .topo-notas {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+}
+
+.global-tela .topo-notas h1 {
+  font-size: 30px;
+  font-family: 'Inter';
+  color: black;
+}
+
+.global-tela .painel-pesquisa {
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  margin-top: auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding-left: 1vh;
+}
+
+.global-tela .painel-pesquisa input {
+  width: 40vh;
+  height: 5vh;
+  margin-right: 4vh;
+  background: transparent;
+  border: none;
+}
+
+.global-tela .painel-pesquisa img {
+  margin-right: 3vh;
+}
+
+/* === CONTEÚDO 3 COLUNAS === */
+.global-tela .fundo-conteudo {
+  display: flex;
+  height: 88vh;
+  background-color: #fafafa;
 }

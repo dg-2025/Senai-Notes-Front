@@ -1,4 +1,4 @@
-body {
+.newuser-root {
   background-color: #f4f6f8; /* fundo claro */
   color: #1a1a1a;
   font-family: Arial, sans-serif;
@@ -8,7 +8,7 @@ body {
   height: 100vh;
 }
 
-.login-box {
+.newuser-root .login-box {
   background-color: #ffffff; /* fundo branco do card */
   padding: 30px;
   border-radius: 10px;
@@ -17,40 +17,40 @@ body {
   box-shadow: 0 0 0 1px #e0e0e0;
 }
 
-.logo {
+.newuser-root .logo {
   width: 120px;
   height: auto;
   margin-bottom: 10px;
 }
 
-h1 {
+.newuser-root h1 {
   font-size: 22px;
   margin-bottom: 5px;
   color: #1a1a1a;
 }
 
-.subtitle {
+.newuser-root .subtitle {
   font-weight: bold;
 }
 
-.instruction {
+.newuser-root .instruction {
   font-size: 12px;
   color: #666;
   margin-bottom: 20px;
 }
 
-form {
+.newuser-root form {
   text-align: left;
 }
 
-label {
+.newuser-root label {
   display: block;
   margin-top: 15px;
   font-size: 14px;
   color: #333;
 }
 
-input {
+.newuser-root input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -60,11 +60,11 @@ input {
   color: #000;
 }
 
-input::placeholder {
+.newuser-root input::placeholder {
   color: #aaa;
 }
 
-button {
+.newuser-root button {
   width: 100%;
   margin-top: 20px;
   padding: 10px;
@@ -76,23 +76,23 @@ button {
   font-weight: bold;
 }
 
-button:hover {
+.newuser-root button:hover {
   background-color: #304ffe;
 }
 
-.login {
+.newuser-root .login {
   margin-top: 15px;
   font-size: 13px;
   color: #555;
 }
 
-.login a {
+.newuser-root .login a {
   color: #3d5afe;
   text-decoration: none;
 }
 
 /* Info note */
-.note {
+.newuser-root .note {
   display: inline-flex;
   font-size: 11px;
   color: #777;
@@ -100,12 +100,12 @@ button:hover {
   align-items: center;
 }
 
-.note img {
+.newuser-root .note img {
   margin-right: 5px;
   height: 15px;
   width: 15px;
 }
 
-.note span {
+.newuser-root .note span {
   margin-top: 1px;
 }

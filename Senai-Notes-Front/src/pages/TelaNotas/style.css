@@ -1,0 +1,230 @@
+/* === LISTA DE NOTAS === */
+.notas-root .lista-notas {
+  display: flex;
+  width: 20vw;
+  background-color: #fafafa;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #ccc;
+}
+
+.notas-root .Create-New-Note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2563eb;
+  color: #F7F9FB;
+  border: none;
+  width: 95%;
+  margin-top: 10px;
+  height: 6%;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.notas-root .conteiner-notas {
+  width: 17vw;
+  height: 77vh;
+  margin-top: 20px;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.notas-root .nota-item {
+  display: flex;
+  width: 15vw;
+  height: 10vh;
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  align-items: center;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notas-root .img-nota {
+  display: flex;
+  width: 8vh;
+  height: 8vh;
+  margin-left: 10px;
+  background-image: url(./imagens/Rectangle\\);
+  background-size: cover;
+}
+
+.notas-root .info-notas {
+  display: flex;
+  width: 19vh;
+  height: 8vh;
+  margin-left: 10px;
+  flex-direction: column;
+  font-family: 'Inter';
+}
+
+.notas-root .data {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #444;
+}
+
+.notas-root .tags-info-notas {
+  display: flex;
+  width: 19vh;
+  height: 4vh;
+  margin-top: 3px;
+}
+
+.notas-root .tags-info-notas p {
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  font-size: 12px;
+}
+
+/* === DETALHES DA NOTA (CENTRO) === */
+.notas-root .nota-detalhe {
+  width: 55%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.notas-root .img-conteudo {
+  width: 100%;
+  height: 20vh;
+  background-image: url("./imagens/Rectangle\\ 45.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.notas-root .titulo-conteudo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.notas-root .titulo-nota {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Inter';
+  color: #111;
+}
+
+.notas-root .tags-da-anotacao {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.notas-root .linha-tags {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter';
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.notas-root .linha-tags img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.notas-root .info-nota {
+  font-size: 13px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.notas-root .info-dado {
+  font-size: 13px;
+  color: #555;
+}
+
+.notas-root .conteudo-anotacao {
+  width: 100%;
+  background-color: white;
+  border-radius: 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'Inter';
+  color: #222;
+}
+
+.notas-root .texto-nota {
+  font-size: 14px;
+  font-family: 'Inter';
+  color: #222;
+}
+
+/* === BOTÕES INFERIORES === */
+.notas-root .botoes-inferior {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.notas-root .botao {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-family: 'Inter';
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #111;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.notas-root .botao:first-child {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+}
+
+/* === AÇÕES DA NOTA (DIREITA) === */
+.notas-root .acoes-nota {
+  width: 18vw;
+  background-color: white;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}
+
+.notas-root .caixa-botoes {
+  display: flex;
+  flex-direction: column;
+}
+
+.notas-root .caixa-botoes .botao {
+  width: 100%;
+  height: 6vh;
+  font-family: 'Inter';
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #111;
+  margin-bottom: 10px;
+}
