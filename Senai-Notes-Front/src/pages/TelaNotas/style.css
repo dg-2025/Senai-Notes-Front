@@ -20,6 +20,12 @@
   height: 6%;
   border-radius: 15px;
   font-size: 16px;
+  transition: all 0.2s;
+}
+.notas-root .Create-New-Note:hover {
+  background-color: #1e40af;
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
 .notas-root .conteiner-notas {
@@ -47,6 +53,13 @@
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.2s;
+}
+.notas-root .nota-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
 .notas-root .img-nota {
@@ -54,7 +67,7 @@
   width: 8vh;
   height: 8vh;
   margin-left: 10px;
-  background-image: url(./imagens/Rectangle\\);
+  background-image: url('./imagens/teset.jpg');
   background-size: cover;
 }
 
@@ -78,14 +91,19 @@
   width: 19vh;
   height: 4vh;
   margin-top: 3px;
+  
 }
 
 .notas-root .tags-info-notas p {
+  display: flex;
+  align-items: center;
   padding: 2px;
   border-radius: 5px;
   background-color: #e5e5e5;
   font-size: 12px;
+  margin-right: 8px;
 }
+
 
 /* === DETALHES DA NOTA (CENTRO) === */
 .notas-root .nota-detalhe {
@@ -99,7 +117,7 @@
 .notas-root .img-conteudo {
   width: 100%;
   height: 20vh;
-  background-image: url("./imagens/Rectangle\\ 45.jpg");
+  background-image: url("./imagens/teset.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -142,18 +160,19 @@
   margin-bottom: 5px;
 }
 
-.notas-root .linha-tags img {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
+
 
 .notas-root .info-nota {
+  display: flex;
   font-size: 13px;
   color: #333;
   margin-right: 10px;
 }
-
+.notas-root .linha-tags img {
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+}
 .notas-root .info-dado {
   font-size: 13px;
   color: #555;
@@ -179,11 +198,33 @@
 /* === BOTÕES INFERIORES === */
 .notas-root .botoes-inferior {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   margin-top: 20px;
 }
 
-.notas-root .botao {
+.notas-root .botao1 {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-family: 'Inter';
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: all 0.2s;
+}
+
+.notas-root .botao1:hover {
+  background-color: #1e40af;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.notas-root .botao2 {
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 12px;
@@ -196,13 +237,15 @@
   color: #111;
   margin-left: 10px;
   margin-right: 10px;
+  transition: all 0.2s;
 }
-
-.notas-root .botao:first-child {
-  background-color: #2563eb;
+.notas-root .botao2:hover {
+  background-color: #eb2525;
   color: white;
   border: none;
+  transition: all 0.2s;
 }
+
 
 /* === AÇÕES DA NOTA (DIREITA) === */
 .notas-root .acoes-nota {
@@ -218,6 +261,8 @@
 }
 
 .notas-root .caixa-botoes .botao {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 6vh;
   font-family: 'Inter';
@@ -227,4 +272,19 @@
   background-color: white;
   color: #111;
   margin-bottom: 10px;
+  transition: all 0.2s;
+}
+.notas-root .caixa-botoes .botao:hover {
+  background-color: #f0f0f0;
+}
+.notas-root .caixa-botoes .botao:nth-of-type(2):hover {
+   background-color: #ffafaf;
+   
+}
+
+.notas-root .caixa-botoes img {
+  width: 24px;
+  height: auto;
+  margin-right: 8px;
+  margin-left: 10px;
 }

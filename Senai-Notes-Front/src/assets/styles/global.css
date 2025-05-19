@@ -215,6 +215,13 @@
   margin-right: 8px;
 }
 
+.global-tela .tag-button img {
+  display: flex;
+  width: 25px;  
+  height: auto;
+  margin-right: 8px;
+}
+
 .global-tela .tags {
   width: 15vw;
   height: 60vh;
@@ -316,6 +323,11 @@
 
 .global-tela .painel-pesquisa img {
   margin-right: 3vh;
+  transition: all 0.2s;
+}
+.global-tela .painel-pesquisa img:hover{
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 /* === CONTEÚDO 3 COLUNAS === */
