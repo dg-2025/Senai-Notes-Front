@@ -1,0 +1,41 @@
+/* === AÇÕES DA NOTA (DIREITA) === */
+.notas-root .acoes-nota {
+  width: 18vw;
+  background-color: white;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}
+
+.notas-root .caixa-botoes {
+  display: flex;
+  flex-direction: column;
+}
+
+.notas-root .caixa-botoes .botao {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 6vh;
+  font-family: 'Inter';
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #111;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+.notas-root .caixa-botoes .botao:hover {
+  background-color: #f0f0f0;
+}
+.notas-root .caixa-botoes .botao:nth-of-type(2):hover {
+   background-color: #ffafaf;
+   
+}
+
+.notas-root .caixa-botoes img {
+  width: 24px;
+  height: auto;
+  margin-right: 8px;
+  margin-left: 10px;
+}

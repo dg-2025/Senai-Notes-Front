@@ -1,0 +1,105 @@
+/* === LISTA DE NOTAS === */
+.notas-root .lista-notas {
+  display: flex;
+  width: 20vw;
+  background-color: #fafafa;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #ccc;
+}
+
+.notas-root .Create-New-Note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2563eb;
+  color: #F7F9FB;
+  border: none;
+  width: 95%;
+  margin-top: 10px;
+  height: 6%;
+  border-radius: 15px;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+.notas-root .Create-New-Note:hover {
+  background-color: #1e40af;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.notas-root .conteiner-notas {
+  width: 17vw;
+  height: 77vh;
+  margin-top: 20px;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.notas-root .nota-item {
+  display: flex;
+  width: 15vw;
+  height: 10vh;
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  align-items: center;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.2s;
+}
+.notas-root .nota-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.notas-root .img-nota {
+  display: flex;
+  width: 8vh;
+  height: 8vh;
+  margin-left: 10px;
+  background-image: url('./imagens/teset.jpg');
+  background-size: cover;
+}
+
+.notas-root .info-notas {
+  display: flex;
+  width: 19vh;
+  height: 8vh;
+  margin-left: 10px;
+  flex-direction: column;
+  font-family: 'Inter';
+}
+
+.notas-root .data {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #444;
+}
+
+.notas-root .tags-info-notas {
+  display: flex;
+  width: 19vh;
+  height: 4vh;
+  margin-top: 3px;
+  
+}
+
+.notas-root .tags-info-notas p {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  font-size: 12px;
+  margin-right: 8px;
+}

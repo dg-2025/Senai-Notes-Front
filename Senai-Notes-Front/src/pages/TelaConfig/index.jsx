@@ -1,11 +1,9 @@
 import './style.css';
 import '../../assets/styles/global.css';
-import Archive from '../../assets/ImgNotas/Archive.svg'
-import Home from '../../assets/ImgNotas/Home.svg'
 import Lupa from '../../assets/ImgNotas/Lupa.svg'
-import SenaiNotes from '../../assets/ImgNotas/Senai Notes.svg'
 import Setting from '../../assets/ImgNotas/Setting.svg'
 import Vector from '../../assets/ImgNotas/Vector.svg'
+import MenuLateral from '../../componentes/menu-lateral';
 
 
 
@@ -18,38 +16,17 @@ function TelaConfig() {
                 <div className="notas-root">
                     <main className="tela">
                         {/* MENU LATERAL */}
-                        <div className="menu-lateral">
-                            <div className="cabecalho-menu">
-                                <h1 className="titulo-menu">
-                                    <img src={SenaiNotes} />
-                                    Senai Notes
-                                </h1>
-                                <button className="button-lateral">
-                                    <img src={Home} />
-                                    All Notes
-                                </button>
-                                <button className="button-lateral">
-                                    <img src={Archive} />
-                                    Archived Notes
-                                </button>
-                            </div>
-                            <div className="tags">
-                                <h1>Tags</h1>
-                                <div className="tag">
-                                    <button className="tag-button">tag</button>
-                                </div>
-                            </div>
-                        </div>
+                        <MenuLateral />
 
                         {/* ÁREA PRINCIPAL */}
                         <div className="tela-container">
                             <div className="cabecalho-topo">
                                 <div className="topo-notas">
-                                    <h1>All Notes</h1>
+                                    <h1>Settings</h1>
                                     <div className="painel-pesquisa">
                                         <img src={Lupa} />
                                         <input type="text" placeholder="Search by title, content, or tags…" />
-                                        <img src={Setting}/>
+                                        <img src={Setting} />
                                         <img src={Vector} />
                                     </div>
                                 </div>
