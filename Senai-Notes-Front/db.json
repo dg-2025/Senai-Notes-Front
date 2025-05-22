@@ -51,6 +51,233 @@
       "id": "a5bc",
       "email": "front@email.com",
       "password": "frontdomina"
+    },
+    {
+      "id": "69b9",
+      "email": "front@email.com",
+      "password": "123"
+    },
+    {
+      "id": "846e",
+      "email": "daniel@email.com",
+      "password": "123"
+    },
+    {
+      "id": "dd69",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:32:47.556Z"
+    },
+    {
+      "id": "c460",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:32:48.409Z"
+    },
+    {
+      "id": "e4d4",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:32:48.597Z"
+    },
+    {
+      "id": "817b",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:32:48.768Z"
+    },
+    {
+      "id": "4d0e",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:32:50.330Z"
+    },
+    {
+      "id": "bc31",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:33:02.782Z"
+    },
+    {
+      "id": "9111",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:33:20.129Z"
+    },
+    {
+      "id": "9043",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:30.402Z"
+    },
+    {
+      "id": "e334",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:33.030Z"
+    },
+    {
+      "id": "e178",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:34.200Z"
+    },
+    {
+      "id": "9345",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:35.283Z"
+    },
+    {
+      "id": "1d24",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:35.470Z"
+    },
+    {
+      "id": "edc9",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:35.625Z"
+    },
+    {
+      "id": "2b5a",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:36:35.788Z"
+    }
+  ],
+  "notas": [
+    {
+      "id": "9999",
+      "userId": "1",
+      "title": "daniel",
+      "description": "Tdeu certo sdkjfgskdjfgkjsdhfkjsdhfkjhsdkjfhskdjhfkjsdhf",
+      "image": "assets/sample.png",
+      "tags": [
+        "Dev",
+        "Teste"
+      ],
+      "date": "2025-05-19",
+      "archived": true
+    },
+    {
+      "id": "9999",
+      "userId": "1",
+      "title": "React Development",
+      "description": "Texto 2.",
+      "image": "assets/sample.png",
+      "tags": [
+        "Dev",
+        "Teste"
+      ],
+      "date": "2025-05-19",
+      "archived": true
+    },
+    {
+      "id": "5840",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:37:54.807Z"
+    },
+    {
+      "id": "2f43",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:37:55.489Z"
+    },
+    {
+      "id": "d94b",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:37:55.878Z"
+    },
+    {
+      "id": "23ad",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:40:19.663Z"
+    },
+    {
+      "id": "42f3",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:40:34.274Z"
+    },
+    {
+      "id": "5ccb",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:41:30.325Z"
+    },
+    {
+      "id": "1a7f",
+      "userId": "1",
+      "title": "Nova anotação",
+      "description": "Escreva aqui sua descrição",
+      "tags": [],
+      "image": "assets/sample.png",
+      "date": "2025-05-22T00:45:49.928Z"
     }
   ]
 }

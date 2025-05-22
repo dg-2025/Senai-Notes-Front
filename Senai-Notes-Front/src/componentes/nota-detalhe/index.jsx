@@ -3,9 +3,24 @@ import '../../assets/styles/global.css';
 import './style.css'
 import Tag from '../../assets/ImgNotas/Tag.svg'
 import CircleClock from '../../assets/ImgNotas/Circle Clock.svg'
+import { use, useEffect, useState } from 'react';
 
 
-function NotaDetalhe() {
+function NotaDetalhe({recebaNota}) {
+    const [title, setTitle] = useState("")
+    const [tag, setTags] = useState("")
+    const [description, setDescription] = useState("")
+    // const [imageURL, setImageURL] = useState("")
+
+    
+    useEffect(() => {
+        if (recebaNota) {
+            setTitle(recebaNota.title);
+            setTags(recebaNota.tags.join(", "));
+            setDescription(recebaNota.description);
+
+        }
+    }, [recebaNota]);
     return (
         <>
             <div className="nota-detalhe">
@@ -14,13 +29,13 @@ function NotaDetalhe() {
                     
 
                     <div className="titulo-conteudo">
-                        <input type="text" className="titulo-nota" placeholder='titulo' />
+                        <input type="text" className="titulo-nota" placeholder='titulo' value = {title} onChange={event => setTitle(event.target.value)} />
                     </div>
 
                     <div className="tags-da-anotacao">
                         <div className="linha-tags">
                             <p className="info-nota"><img src={Tag} />Tags:</p>
-                            <input type="text" className="info-dado" placeholder='tag' />
+                            <input type="text" className="info-dado" placeholder='tag' value = {tag} onChange={event => setTags(event.target.value)} />
                         </div>
                         <div className="linha-tags">
                             <p className="info-nota"><img src={CircleClock} />Last edited:</p>
@@ -30,13 +45,13 @@ function NotaDetalhe() {
 
                     <div className="conteudo-anotacao">
                         <p className="texto-nota">
-                            <textarea/>
+                            <textarea value={description} onChange={event => setDescription(event.target.value)}/>
                         </p>
                     </div>
                 </section>
 
                 <div className="botoes-inferior">
-                    <button className="botao1">Save Note</button>
+                    <button className="botao1" onClick={SalvarNota}>Save Note</button>
                     <button className="botao2">Cancel</button>
                 </div>
             </div>

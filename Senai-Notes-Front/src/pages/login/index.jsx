@@ -21,7 +21,7 @@ function Login() {
 
       alert("Login Realizado com sucesso!");
 
-      window.location.href = "/notes";
+      window.location.href = "/TelaNotas";
 
     } else {
 
