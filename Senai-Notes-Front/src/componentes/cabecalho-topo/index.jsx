@@ -1,6 +1,6 @@
 
 import '../../assets/styles/global.css';
-import Lupa from '../../assets/ImgNotas/Lupa.svg'
+import Lupa from '../../assets/ImgNotas/lupa.svg'
 import Setting from '../../assets/ImgNotas/Setting.svg'
 import Vector from '../../assets/ImgNotas/Vector.svg'
 
