@@ -3,7 +3,7 @@ import '../../assets/styles/global.css';
 import './style.css'
 import Tag from '../../assets/ImgNotas/Tag.svg'
 import CircleClock from '../../assets/ImgNotas/Circle Clock.svg'
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function NotaDetalhe({recebaNota}) {
