@@ -6,13 +6,13 @@ import CircleClock from '../../assets/ImgNotas/Circle Clock.svg'
 import { useEffect, useState } from 'react';
 
 
-function NotaDetalhe({recebaNota}) {
+function NotaDetalhe({ recebaNota }) {
     const [title, setTitle] = useState("")
     const [tag, setTags] = useState("")
     const [description, setDescription] = useState("")
     // const [imageURL, setImageURL] = useState("")
 
-    
+
     useEffect(() => {
         if (recebaNota) {
             setTitle(recebaNota.title);
@@ -21,34 +21,46 @@ function NotaDetalhe({recebaNota}) {
 
         }
     }, [recebaNota]);
-      // Envia atualização da nota para o servidor
-//   const salvarNota = async () => {
-//     const response = await fetch(`http://localhost:3000/notes/${notaSelecionada.id}`, {
-//       method: "PUT",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         ...notaSelecionada,
-//         title,
-//         description,
-//         tags: tags.split(",").map(t => t.trim()),
-//         date: new Date().toISOString()
-//       })
-//     });
+    // Envia atualização da nota para o servidor
+
+    const salvarNota = async () => {
+    const response = await fetch(`http://localhost:3000/notas/${recebaNota.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...recebaNota,
+        title,
+        description,
+        tags: tag.split(",").map(t => t.trim()),
+        date: new Date().toISOString()
+      })
+    });
+
+    if (response.ok) {
+        alert("salvo com sucesso")
+        window.location.reload()
+     
+    }else {
+
+      alert("erro ao salvar")
+    }
+  }
+
     return (
         <>
             <div className="nota-detalhe">
                 <section className="conteudo">
                     <div className="img-conteudo"></div>
-                    
+
 
                     <div className="titulo-conteudo">
-                        <input type="text" className="titulo-nota" placeholder='titulo' value = {title} onChange={event => setTitle(event.target.value)} />
+                        <input type="text" className="titulo-nota" placeholder='titulo' value={title} onChange={event => setTitle(event.target.value)} />
                     </div>
 
                     <div className="tags-da-anotacao">
                         <div className="linha-tags">
                             <p className="info-nota"><img src={Tag} />Tags:</p>
-                            <input type="text" className="info-dado" placeholder='tag' value = {tag} onChange={event => setTags(event.target.value)} />
+                            <input type="text" className="info-dado" placeholder='tag' value={tag} onChange={event => setTags(event.target.value)} />
                         </div>
                         <div className="linha-tags">
                             <p className="info-nota"><img src={CircleClock} />Last edited:</p>
@@ -58,13 +70,13 @@ function NotaDetalhe({recebaNota}) {
 
                     <div className="conteudo-anotacao">
                         <p className="texto-nota">
-                            <textarea value={description} onChange={event => setDescription(event.target.value)}/>
+                            <textarea value={description} onChange={event => setDescription(event.target.value)} />
                         </p>
                     </div>
                 </section>
 
                 <div className="botoes-inferior">
-                    <button className="botao1">Save Note</button>
+                    <button className="botao1" onClick={salvarNota} >Save Note</button>
                     <button className="botao2">Cancel</button>
                 </div>
             </div>

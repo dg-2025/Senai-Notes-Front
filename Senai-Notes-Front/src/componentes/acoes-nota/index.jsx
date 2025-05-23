@@ -12,7 +12,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
 
     const onArchiveNote = async () => {
 
-        const response = await fetch(`${baseUrl}/${notaSelecionada.id}`, {
+        const response = await fetch(`${baseUrl}/${notaSelecionada?.id}`, {
             method: "PATCH",
             headers: { 
                 "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
 
         } else {
 
-            alert(`Nota "${notaSelecionada.title}" arquivada!`)
+            alert(`Nota "${notaSelecionada?.title}" arquivada!`)
         }
 
         aoFecharANota();
@@ -35,7 +35,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
 
     const onUnarchiveNote = async () => {
 
-        const response = await fetch(`${baseUrl}/${notaSelecionada.id}`, {
+        const response = await fetch(`${baseUrl}/${notaSelecionada?.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
 
         if (!response.ok) {
 
-            alert (`Nota "${notaSelecionada.title}" desarquivada!`);
+            alert (`Nota "${notaSelecionada?.title}" desarquivada!`);
 
         }
 
@@ -55,7 +55,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
 
     const onDeleteNote = async () => {
 
-        const response = await fetch(`${baseUrl}/${notaSelecionada.id}`,{
+        const response = await fetch(`${baseUrl}/${notaSelecionada?.id}`,{
             method: "DELETE",
         });
 
@@ -65,7 +65,7 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
         
         } else {
 
-            alert(`Nota "${notaSelecionada.title}" deletada!`)
+            alert(`Nota "${notaSelecionada?.title}" deletada!`)
 
         }
 
@@ -76,12 +76,12 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
         <>
             <div className="acoes-nota">
                 <div className="caixa-botoes">
-                    {notaSelecionada.archived && (
+                    {notaSelecionada?.archived && (
                     <button onClick={onUnarchiveNote}
                     className="botao"><img src={Archive} />Unarchive Note</button>
                     )}
 
-                    {!notaSelecionada.archived && (
+                    {!notaSelecionada?.archived && (
                     <button onClick={onArchiveNote}
                     className="botao"><img src={Archive} />Archive Note</button>
                     )}
