@@ -280,22 +280,13 @@
       "date": "2025-05-22T00:45:49.928Z"
     },
     {
-      "id": "94e8",
+      "id": "79c8",
       "userId": "1",
       "title": "Nova anotação",
       "description": "Escreva aqui sua descrição",
       "tags": [],
       "image": "assets/sample.png",
-      "date": "2025-05-23T00:30:10.117Z"
-    },
-    {
-      "id": "91a5",
-      "userId": "1",
-      "title": "Nova anotação",
-      "description": "Escreva aqui sua descrição",
-      "tags": [],
-      "image": "assets/sample.png",
-      "date": "2025-05-23T00:30:53.086Z"
+      "date": "2025-05-22T00:50:22.842Z"
     }
   ]
 }

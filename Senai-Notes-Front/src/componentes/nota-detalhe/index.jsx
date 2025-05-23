@@ -3,7 +3,7 @@ import '../../assets/styles/global.css';
 import './style.css'
 import Tag from '../../assets/ImgNotas/Tag.svg'
 import CircleClock from '../../assets/ImgNotas/Circle Clock.svg'
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function NotaDetalhe({recebaNota}) {
@@ -21,6 +21,19 @@ function NotaDetalhe({recebaNota}) {
 
         }
     }, [recebaNota]);
+      // Envia atualização da nota para o servidor
+//   const salvarNota = async () => {
+//     const response = await fetch(`http://localhost:3000/notes/${notaSelecionada.id}`, {
+//       method: "PUT",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         ...notaSelecionada,
+//         title,
+//         description,
+//         tags: tags.split(",").map(t => t.trim()),
+//         date: new Date().toISOString()
+//       })
+//     });
     return (
         <>
             <div className="nota-detalhe">
@@ -51,7 +64,7 @@ function NotaDetalhe({recebaNota}) {
                 </section>
 
                 <div className="botoes-inferior">
-                    <button className="botao1" onClick={SalvarNota}>Save Note</button>
+                    <button className="botao1">Save Note</button>
                     <button className="botao2">Cancel</button>
                 </div>
             </div>
