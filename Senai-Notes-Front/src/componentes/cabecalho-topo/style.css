@@ -1,0 +1,27 @@
+/* === RESPONSIVIDADE === */
+@media screen and (max-width: 768px) {
+    .topo-notas {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  
+    .topo-notas h1 {
+      font-size: 20px;
+    }
+  
+    .painel-pesquisa {
+      width: 100%;
+      padding: 8px;
+    }
+  
+    .painel-pesquisa input {
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    .painel-pesquisa img {
+      width: 18px;
+      height: 18px;
+    }
+  }

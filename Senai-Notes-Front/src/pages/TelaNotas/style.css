@@ -5,3 +5,87 @@
     color: rgb(77, 219, 255);
 
 }
+
+/* estilo base para desktop */
+.tela {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .tela.desktop .tela-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fundo-conteudo {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    gap: 1rem;
+    overflow-y: auto;
+  }
+  
+  /* para desktop, lista e detalhe lado a lado */
+  .fundo-conteudo > * {
+    flex: 1;
+  }
+  
+  /* mobile */
+  .tela.mobile {
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .tela.mobile .tela-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tela.mobile .fundo-conteudo {
+    flex-direction: column !important; 
+    padding: 0.5rem;
+    overflow-y: auto;
+  }
+  
+  .tela.mobile .fundo-conteudo > * {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+
+  .tela.mobile MenuLateral {
+    display: none; 
+  }
+  
+  .tela.mobile CabecalhoTopo {
+    width: 100%;
+  }
+  
+  /* scrollbar estilizada, opcional */
+  .fundo-conteudo::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .fundo-conteudo::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+  }
+  
+  .nota-detalhe * {
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    overflow-x: hidden; 
+  }
+  
+  .nota-detalhe {
+    overflow-x: hidden !important;
+    overflow-y: auto;
+  }
+  

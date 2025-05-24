@@ -1,8 +1,8 @@
-
 import Archive from '../../assets/ImgNotas/Archive.svg';
 import Home from '../../assets/ImgNotas/Home.svg';
 import SenaiNotes from '../../assets/ImgNotas/Senai Notes.svg';
 import Tag from '../../assets/ImgNotas/Tag.svg';
+
 
 function MenuLateral() {
     return (

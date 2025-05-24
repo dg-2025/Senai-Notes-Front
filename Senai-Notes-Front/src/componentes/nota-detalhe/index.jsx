@@ -1,4 +1,3 @@
-
 import '../../assets/styles/global.css';
 import './style.css'
 import Tag from '../../assets/ImgNotas/Tag.svg'
