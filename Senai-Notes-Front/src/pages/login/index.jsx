@@ -28,16 +28,17 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
 
-        // 🔒 Verifique a resposta da API e ajuste esses campos se necessário
-        const token = data.token || "mockToken";
-        const userId = data.userId || "mockUserId";
+        const token = data.token;
+        const userId = data.usuario?.id;
 
-        // Salvar dados no localStorage
-        localStorage.setItem("meuToken", token);
-        localStorage.setItem("meuId", userId);
-
-        alert("Login realizado com sucesso!");
-        window.location.href = "/TelaNotas";
+        if (token && userId) {
+          localStorage.setItem("meuToken", token);
+          localStorage.setItem("meuId", userId);
+          alert("Login realizado com sucesso!");
+          window.location.href = "/TelaNotas";
+        } else {
+          alert("Erro ao processar resposta do servidor.");
+        }
       } else if (response.status === 401) {
         alert("Credenciais incorretas.");
       } else {

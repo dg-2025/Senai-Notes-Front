@@ -2,79 +2,94 @@ import './style.css';
 import '../../assets/styles/global.css';
 import { useEffect, useState } from 'react';
 
-
-
 function ListaNotas({ vizualisarNota }) {
+  const [Notas, setNotas] = useState([]);
 
+  useEffect(() => {
+    getNotas();
+  }, []);
 
+  const getNotas = async () => {
+    const token = localStorage.getItem("meuToken");
 
-    const [Notas, setNotas] = useState([]);
-
-
-    useEffect(() => {
-
-        getNotas();
-
-    }, []);
-
-    const getNotas = async () => {
-
-        let response = await fetch("")
-
-        if (response.ok == true) {
-            let json = await response.json()
-
-            setNotas(json);
+    try {
+      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Nota", {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
+      });
+
+      if (response.ok) {
+        const json = await response.json();
+        setNotas(json);
+      } else {
+        alert("Erro ao buscar notas.");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar notas:", error);
     }
-    const NovaNota = async () => {
+  };
 
-        const response = await fetch("https://apisenainotes404.azurewebsites.net/index.html", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                userId: "1",                          // ID fixo de usuário por enquanto
-                title: "Nova anotação",               // Título padrão
-                description: "Escreva aqui sua descrição", // Descrição padrão
-                tags: [],                             // Sem tags iniciais
-                image: "assets/sample.png",           // Imagem padrão
-                date: new Date().toISOString()        // Data atual em ISO
-            })
-        });
+  const NovaNota = async () => {
+    const token = localStorage.getItem("meuToken");
+    const userId = localStorage.getItem("meuId");
 
-        if (response.ok) {
-            alert("criado com sucesso")
-            await getNotas ();
-        } else {
-            alert("não criado")
-        }
+    if (!token || !userId) {
+      alert("Usuário não autenticado.");
+      return;
     }
 
+    const formData = new FormData();
+    formData.append("titulo", "Nova anotação");
+    formData.append("texto", "Escreva aqui sua descrição");
+    formData.append("imagem", "nota.jpg");
+    formData.append("idUsuario", parseInt(userId));
+    formData.append("etiquetas", "sem-tag");
 
-    return (
-        <>
-            <nav className="lista-notas">
-                <button className="Create-New-Note" onClick={NovaNota}>Nova Nota</button>
-                <section className="conteiner-notas">
+    const fakeFile = new Blob(["conteúdo de exemplo"], { type: "text/plain" });
+    formData.append("arquivoAnotacao", fakeFile, "nota.txt");
 
-                    {Notas.map(nota => (
+    try {
+      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Nota", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formData
+      });
 
-                        <div className="nota-item" onClick={() => vizualisarNota(nota)}>
-                            <div className="img-nota"></div>
-                            <div className="info-notas">
-                                <h1>{nota.title}</h1>
-                                <div className="tags-info-notas">
-                                    <p>{nota.tags}</p>
-                                </div>
-                                <p className="data">{nota.date}</p>
-                            </div>
-                        </div>
+      if (response.ok) {
+        alert("Nota criada com sucesso!");
+        await getNotas();
+      } else {
+        const text = await response.text();
+        alert("Erro ao criar nota: " + text);
+      }
+    } catch (error) {
+      console.error("Erro ao criar nota:", error);
+      alert("Erro de rede.");
+    }
+  };
 
-                    ))}
-
-                </section>
-            </nav>
-        </>
-    )
+  return (
+    <nav className="lista-notas">
+      <button className="Create-New-Note" onClick={NovaNota}>Nova Nota</button>
+      <section className="conteiner-notas">
+        {Notas.map(nota => (
+          <div className="nota-item" key={nota.id} onClick={() => vizualisarNota(nota)}>
+            <div className="img-nota"></div>
+            <div className="info-notas">
+              <h1>{nota.titulo}</h1>
+              <div className="tags-info-notas">
+                <p>{(nota.etiquetas || []).join(", ")}</p>
+              </div>
+              <p className="data">{new Date(nota.dataCriacao || nota.date).toLocaleDateString()}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+    </nav>
+  );
 }
+
 export default ListaNotas;
