@@ -12,8 +12,14 @@ function ListaNotas({ vizualisarNota }) {
   const getNotas = async () => {
     const token = localStorage.getItem("meuToken");
 
+    if (!token) {
+      alert("Você precisa estar logado.");
+      return;
+    }
+
     try {
       const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Nota", {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -22,11 +28,14 @@ function ListaNotas({ vizualisarNota }) {
       if (response.ok) {
         const json = await response.json();
         setNotas(json);
+      } else if (response.status === 401) {
+        alert("Token inválido ou expirado. Faça login novamente.");
       } else {
         alert("Erro ao buscar notas.");
       }
     } catch (error) {
       console.error("Erro ao buscar notas:", error);
+      alert("Erro de rede.");
     }
   };
 
@@ -44,9 +53,9 @@ function ListaNotas({ vizualisarNota }) {
     formData.append("texto", "Escreva aqui sua descrição");
     formData.append("imagem", "nota.jpg");
     formData.append("idUsuario", parseInt(userId));
-    formData.append("etiquetas", "sem-tag");
+    formData.append("Tags", "sem-tag"); // 👈 corrigido
 
-    const fakeFile = new Blob(["conteúdo de exemplo"], { type: "text/plain" });
+    const fakeFile = new Blob(["nota vazia"], { type: "text/plain" });
     formData.append("arquivoAnotacao", fakeFile, "nota.txt");
 
     try {
@@ -70,6 +79,7 @@ function ListaNotas({ vizualisarNota }) {
       alert("Erro de rede.");
     }
   };
+
 
   return (
     <nav className="lista-notas">

@@ -20,30 +20,28 @@ function NotaDetalhe({ recebaNota }) {
     }
   };
 
+  // Carrega os dados da nota recebida
   useEffect(() => {
     if (recebaNota) {
       setTitle(recebaNota.titulo || "");
       setTags((recebaNota.etiquetas || []).join(", "));
       setDescription(recebaNota.texto || "");
 
-      // Se já tem imagem no back
       if (recebaNota.imagem) {
         setImageURL(`https://apisenainotes404.azurewebsites.net/uploads/${recebaNota.imagem}`);
+      } else {
+        setImageURL("/imagens/teset.png"); // fallback
       }
     }
   }, [recebaNota]);
 
+  // Salvar alteração da nota
   const salvarNota = async () => {
     const token = localStorage.getItem("meuToken");
     const userId = localStorage.getItem("meuId");
 
-    if (!token || !userId) {
-      alert("Usuário não autenticado.");
-      return;
-    }
-
-    if (!recebaNota || !recebaNota.id) {
-      alert("Nota inválida.");
+    if (!token || !userId || !recebaNota?.id) {
+      alert("Usuário não autenticado ou nota inválida.");
       return;
     }
 
@@ -51,14 +49,14 @@ function NotaDetalhe({ recebaNota }) {
     formData.append("titulo", title);
     formData.append("texto", description);
     formData.append("imagem", image ? image.name : recebaNota.imagem || "imagem.png");
-    formData.append("idUsuario", parseInt(userId));
-    formData.append("etiquetas", tag);
+    formData.append("idUsuario", userId);
+    formData.append("etiquetas", tag); // a API aceita string separada por vírgula
 
+    // Envia arquivo real ou falso (caso o usuário não altere a imagem)
     if (image) {
       formData.append("arquivoAnotacao", image);
     } else {
-      // Envia um arquivo vazio se não tiver imagem nova
-      const fakeFile = new Blob(["vazio"], { type: "text/plain" });
+      const fakeFile = new Blob([" "], { type: "text/plain" });
       formData.append("arquivoAnotacao", fakeFile, "vazio.txt");
     }
 
@@ -66,7 +64,8 @@ function NotaDetalhe({ recebaNota }) {
       const response = await fetch(`https://apisenainotes404.azurewebsites.net/api/Nota/${recebaNota.id}`, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          // Não adicione Content-Type com FormData
         },
         body: formData
       });
@@ -80,7 +79,7 @@ function NotaDetalhe({ recebaNota }) {
       }
     } catch (error) {
       console.error("Erro ao salvar:", error);
-      alert("Erro de rede.");
+      alert("Erro de rede ao tentar salvar a nota.");
     }
   };
 
@@ -91,7 +90,7 @@ function NotaDetalhe({ recebaNota }) {
           <label
             className="image"
             style={{
-              backgroundImage: `url('${imageURL || "../../TelaNotas/imagens/teset.png"}')`
+              backgroundImage: `url('${imageURL}')`
             }}
           >
             <input
