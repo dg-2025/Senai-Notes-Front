@@ -21,15 +21,21 @@ function Login() {
         },
         body: JSON.stringify({
           email: email,
-          senha: password 
+          senha: password
         })
       });
 
       if (response.ok) {
-        const data = await response.json();
+        let data;
+        try {
+          data = await response.json();
+        } catch {
+          alert("Resposta inválida do servidor.");
+          return;
+        }
 
-        const token = data.token;
-        const userId = data.usuario?.id;
+        const token = data?.token;
+        const userId = data?.cliente?.userId;
 
         if (token && userId) {
           localStorage.setItem("meuToken", token);
@@ -37,8 +43,9 @@ function Login() {
           alert("Login realizado com sucesso!");
           window.location.href = "/TelaNotas";
         } else {
-          alert("Erro ao processar resposta do servidor.");
+          alert("Login OK, mas dados do usuário não foram retornados corretamente.");
         }
+
       } else if (response.status === 401) {
         alert("Credenciais incorretas.");
       } else {
@@ -56,11 +63,11 @@ function Login() {
       <div className="login-root">
         <div className="login-box">
           <img src={logo} alt="Logo Senai Notes" className="logo" />
-          <p className="subtitle">Welcome to Note</p>
-          <p className="instruction">Please log in to continue</p>
+          <p className="subtitle">Bem-vindo ao Note</p>
+          <p className="instruction">Por favor, faça login para continuar</p>
 
           <form>
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">Endereço de email</label>
             <input
               className="email"
               value={email}
@@ -72,7 +79,7 @@ function Login() {
             />
 
             <label htmlFor="password">
-              Password <a href="/forgotpassword" className="forgot">Forgot</a>
+              Senha <a href="/forgotpassword" className="forgot">Esqueceu</a>
             </label>
             <input
               className="password"
@@ -84,12 +91,12 @@ function Login() {
             />
 
             <button className="submit" onClick={loginClick} type="button">
-              Login
+              Conecte-se
             </button>
           </form>
 
           <p className="signup">
-            No account yet? <a href="/signup">Sign Up</a>
+            Ainda não tem conta? <a href="/signup">Cadastre-se</a>
           </p>
         </div>
       </div>
