@@ -19,7 +19,7 @@ function ListaNotas({ vizualisarNota }) {
 
     const getNotas = async () => {
 
-        let response = await fetch("http://localhost:3000/notas")
+        let response = await fetch("")
 
         if (response.ok == true) {
             let json = await response.json()
@@ -29,7 +29,7 @@ function ListaNotas({ vizualisarNota }) {
     }
     const NovaNota = async () => {
 
-        const response = await fetch("http://localhost:3000/notas", {
+        const response = await fetch("https://apisenainotes404.azurewebsites.net/index.html", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

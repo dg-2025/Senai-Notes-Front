@@ -26,7 +26,7 @@ function SignUp() {
       return;
     }
 
-    let response = await fetch("http://localhost:3000/users", {
+    let response = await fetch("https://apisenainotes404.azurewebsites.net/index.html", {
 
       headers: {
         "Content-Type": "application/json"
@@ -46,18 +46,6 @@ function SignUp() {
       alert("Cadastro Realizado com sucesso");
 
       console.log(response);
-
-      let json = await response.json();
-
-      let token = json.accessToken;
-      let userId = json.user.id;
-
-      console.log("Token" + token);
-
-      //LOCALSTORAGE
-
-      localStorage.setItem("meuToken", token);
-      localStorage.setItem("meuId", userId)
 
       window.location.href = "/login";
 

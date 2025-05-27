@@ -11,25 +11,7 @@ function Login() {
 
   const loginClick = async () => {
 
-    if (email == "obamapresidente@email.com" && password == "12345678") {
-
-      let token = "meuToken";
-      let userId = "userID";
-
-      localStorage.setItem("meuToken", token);
-      localStorage.setItem("userID", userId)
-
-      alert("Login Realizado com sucesso!");
-
-      window.location.href = "/TelaNotas";
-
-    } else {
-
-      alert("Credenciais Incorretas.");
-      return;
-    }
-
-    let response = await fetch("http://localhost:3000", {
+    let response = await fetch("https://apisenainotes404.azurewebsites.net/index.html", {
 
       headers: {
         "Content-Type": "application/json"
@@ -45,21 +27,25 @@ function Login() {
 
     if (response.ok == true) {
 
-      alert("Login Realizado Com Sucesso!");
+      alert("Login Realizado Com Sucesso!"); 
 
       console.log(response);
 
-      let json = await response.json()
+      window.location.href = "/login";
 
-      let token = json.acessToken;
-      let userId = json.user.id;
+    } else { 
 
-      console.log("Token" + token);
+      if (response.status == 401) {
 
-      localStorage.setItem("meuToken", token)
-      localStorage.setItem("meuId", userId)
+        alert("Credenciais Incorretas.");
+
+      } else {
+
+        alert("Erro inesperado aconteceu.")
+
+      }
     }
-  }
+}
 
 
 

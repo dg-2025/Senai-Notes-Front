@@ -234,9 +234,11 @@
       "userId": "1",
       "title": "Nova anotação",
       "description": "Escreva aqui sua descrição",
-      "tags": [],
+      "tags": [
+        ""
+      ],
       "image": "assets/sample.png",
-      "date": "2025-05-22T00:40:34.274Z"
+      "date": "2025-05-26T22:42:19.915Z"
     },
     {
       "id": "5ccb",

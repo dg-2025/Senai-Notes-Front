@@ -3,15 +3,70 @@ import './style.css'
 import Tag from '../../assets/ImgNotas/Tag.svg'
 import CircleClock from '../../assets/ImgNotas/Circle Clock.svg'
 import { useEffect, useState } from 'react';
+import TelaNotas from '../../pages/TelaNotas';
 
+//   const onSaveNote = async () => {
+//     const response = await fetch(`http://localhost:3000/notes/${notaSelecionada.id}`, {
+//       method: "PUT",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         ...notaSelecionada,
+//         title,
+//         description,
+//         tags: tags.split(",").map(t => t.trim()),
+//         image: "assets/sample.png", // temporário
+//         date: new Date().toISOString()
+//       })
+//     });
+
+//     if (response.ok) {
+//       alert("Sucesso!");
+//     } else {
+//       alert("Erro!");
+//     }
+//   }
+
+
+//   const onSaveNoteImg = async () => {
+    
+//     let formData = new FormData();
+
+//     formData.append("titulo", title);
+//     formData.append("description", description);
+//     formData.append("tags", tags);
+//     formData.append("image", image);
+
+//     const response = await fetch(`http://localhost:3000/notes/${notaSelecionada.id}`, {
+//       method: "PUT",
+//       headers: {},
+//       body: formData
+//     });
+
+//     if (response.ok) {
+//       alert("Sucesso!");
+//     } else {
+//       alert("Erro!");
+//     }
+//   }
 
 function NotaDetalhe({ recebaNota }) {
     const [title, setTitle] = useState("")
     const [tag, setTags] = useState("")
     const [description, setDescription] = useState("")
-    // const [imageURL, setImageURL] = useState("")
 
+    const [image, setImage] = useState(null);
+    const [imageURL, setImageURL] = useState("")
 
+    const aoAdicionarImagem =  (event) => { 
+
+        const arquivo = event.target.files[0];
+
+        console.log("arquivo", arquivo);
+
+        setImage(arquivo);
+        setImageURL(URL.createObjectURL(arquivo));
+
+    }
     useEffect(() => {
         if (recebaNota) {
             setTitle(recebaNota.title);
@@ -23,7 +78,7 @@ function NotaDetalhe({ recebaNota }) {
     // Envia atualização da nota para o servidor
 
     const salvarNota = async () => {
-    const response = await fetch(`http://localhost:3000/notas/${recebaNota.id}`, {
+    const response = await fetch(`/${recebaNota.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -49,7 +104,14 @@ function NotaDetalhe({ recebaNota }) {
         <>
             <div className="nota-detalhe">
                 <section className="conteudo">
-                    <div className="img-conteudo"></div>
+                    <div className="img-conteudo">
+                        <label className="image"
+                        style={{ backgroundImage: imageURL || `url('${imageURL || '../../TelaNotas/imagens/teset.png'}')`}}
+                        > 
+
+                        <input onChange={event => aoAdicionarImagem(event)}  type="file" className="file_input" />
+                        </label> 
+                    </div>
 
 
                     <div className="titulo-conteudo">
@@ -68,9 +130,9 @@ function NotaDetalhe({ recebaNota }) {
                     </div>
 
                     <div className="conteudo-anotacao">
-                        <p className="texto-nota">
+                        <div className="texto-nota">
                             <textarea value={description} onChange={event => setDescription(event.target.value)} />
-                        </p>
+                        </div>
                     </div>
                 </section>
 

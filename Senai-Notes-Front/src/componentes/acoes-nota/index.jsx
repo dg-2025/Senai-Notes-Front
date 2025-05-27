@@ -8,7 +8,7 @@ import Delete from '../../assets/ImgNotas/Delete.svg'
 
 
 function AcoesNota({ notaSelecionada, aoFecharANota }) {
-    const baseUrl = "http://localhost:3000/notas";
+    const baseUrl = "https://apisenainotes404.azurewebsites.net/index.html";
 
     const onArchiveNote = async () => {
 
@@ -78,17 +78,17 @@ function AcoesNota({ notaSelecionada, aoFecharANota }) {
                 <div className="caixa-botoes">
                     {notaSelecionada?.archived && (
                     <button onClick={onUnarchiveNote}
-                    className="botao"><img src={Archive} />Unarchive Note</button>
+                    className="botao" type='button'><img src={Archive} />Unarchive Note</button>
                     )}
 
                     {!notaSelecionada?.archived && (
                     <button onClick={onArchiveNote}
-                    className="botao"><img src={Archive} />Archive Note</button>
+                    className="botao" type='button'><img src={Archive} />Archive Note</button>
                     )}
 
                         
                     <button onClick={onDeleteNote}
-                     className="botao"><img src={Delete} />Delete Note</button>
+                     className="botao" type='button'><img src={Delete} />Delete Note</button>
                 </div>
             </div>
 

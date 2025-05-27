@@ -149,3 +149,13 @@
   border: none;
   transition: all 0.2s;
 }
+
+.notas-root .file_input {
+
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 0px;
+  height: 0px;
+  
+}
