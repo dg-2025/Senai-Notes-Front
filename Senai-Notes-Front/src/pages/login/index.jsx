@@ -38,6 +38,9 @@ function Login() {
         const userId = data?.cliente?.userId;
 
         if (token && userId) {
+
+          console.log("meuToken" + token)
+
           localStorage.setItem("meuToken", token);
           localStorage.setItem("meuId", userId);
           alert("Login realizado com sucesso!");

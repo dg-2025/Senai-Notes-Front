@@ -8,7 +8,7 @@ import Delete from '../../assets/ImgNotas/Delete.svg'
 
 
 function AcoesNota({ notaSelecionada, aoFecharANota }) {
-    const baseUrl = "https://apisenainotes404.azurewebsites.net/index.html";
+    const baseUrl = "https://apisenainotes404.azurewebsites.net/api/Nota";
 
     const onArchiveNote = async () => {
 
