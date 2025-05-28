@@ -3,103 +3,77 @@ import '../../assets/styles/global.css';
 import { useEffect, useState } from 'react';
 
 function ListaNotas({ vizualisarNota }) {
-  const [Notas, setNotas] = useState([]);
+    const [Notas, setNotas] = useState([]);
 
-  useEffect(() => {
-    getNotas();
-  }, []);
+    useEffect(() => {
+        getNotas();
+    }, []);
 
-  const getNotas = async () => {
-    const token = localStorage.getItem("meuToken");
-
-    if (!token) {
-      alert("Você precisa estar logado.");
-      return;
-    }
-
-    try {
-      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Nota", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
+    const getNotas = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/notas");
+            if (response.ok) {
+                const json = await response.json();
+                setNotas(json);
+            } else {
+                console.error("Erro ao buscar notas");
+            }
+        } catch (error) {
+            console.error("Erro na requisição:", error);
         }
-      });
+    };
 
-      if (response.ok) {
-        const json = await response.json();
-        setNotas(json);
-      } else if (response.status === 401) {
-        alert("Token inválido ou expirado. Faça login novamente.");
-      } else {
-        alert("Erro ao buscar notas.");
-      }
-    } catch (error) {
-      console.error("Erro ao buscar notas:", error);
-      alert("Erro de rede.");
-    }
-  };
+    const NovaNota = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/notas", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    userId: "1",
+                    title: "Nova anotação",
+                    description: "Escreva aqui sua descrição",
+                    tags: [],
+                    image: "assets/sample.png",
+                    date: new Date().toISOString()
+                })
+            });
 
-  const NovaNota = async () => {
-    const token = localStorage.getItem("meuToken");
-    const userId = localStorage.getItem("meuId");
+            if (response.ok) {
+                alert("Criado com sucesso!");
+                await getNotas();
+            } else {
+                alert("Erro ao criar nota.");
+            }
+        } catch (error) {
+            console.error("Erro ao criar nota:", error);
+        }
+    };
 
-    if (!token || !userId) {
-      alert("Usuário não autenticado.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("titulo", "Nova anotação");
-    formData.append("texto", "Escreva aqui sua descrição");
-    formData.append("imagem", "nota.jpg");
-    formData.append("idUsuario", parseInt(userId));
-    formData.append("Tags", "sem-tag"); // 👈 corrigido
-
-    const fakeFile = new Blob(["nota vazia"], { type: "text/plain" });
-    formData.append("arquivoAnotacao", fakeFile, "nota.txt");
-
-    try {
-      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Nota", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        body: formData
-      });
-
-      if (response.ok) {
-        alert("Nota criada com sucesso!");
-        await getNotas();
-      } else {
-        const text = await response.text();
-        alert("Erro ao criar nota: " + text);
-      }
-    } catch (error) {
-      console.error("Erro ao criar nota:", error);
-      alert("Erro de rede.");
-    }
-  };
-
-
-  return (
-    <nav className="lista-notas">
-      <button className="Create-New-Note" onClick={NovaNota}>Nova Nota</button>
-      <section className="conteiner-notas">
-        {Notas.map(nota => (
-          <div className="nota-item" key={nota.id} onClick={() => vizualisarNota(nota)}>
-            <div className="img-nota"></div>
-            <div className="info-notas">
-              <h1>{nota.titulo}</h1>
-              <div className="tags-info-notas">
-                <p>{(nota.etiquetas || []).join(", ")}</p>
-              </div>
-              <p className="data">{new Date(nota.dataCriacao || nota.date).toLocaleDateString()}</p>
-            </div>
-          </div>
-        ))}
-      </section>
-    </nav>
-  );
+    return (
+        <nav className="lista-notas">
+            <button className="Create-New-Note" onClick={NovaNota}>Nova Nota</button>
+            <section className="conteiner-notas">
+                {Notas.map(nota => (
+                    <div key={nota.id} className="nota-item" onClick={() => vizualisarNota(nota)}>
+                        <div className="img-nota">
+                            <img
+                                src={nota.image || "assets/sample.png"}
+                                alt="Nota"
+                                className="miniatura-nota"
+                            />
+                        </div>
+                        <div className="info-notas">
+                            <h1>{nota.title}</h1>
+                            <div className="tags-info-notas">
+                                <p>{(nota.tags || []).join(", ")}</p>
+                            </div>
+                            <p className="data">{new Date(nota.date).toLocaleString()}</p>
+                        </div>
+                    </div>
+                ))}
+            </section>
+        </nav>
+    );
 }
 
 export default ListaNotas;

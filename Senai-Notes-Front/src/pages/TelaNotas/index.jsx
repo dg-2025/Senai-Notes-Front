@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 
 function TelaNotas() {
     const [notaSelecionada, setNotaSelecionada] = useState(null);
+    const [notas, setNotas] = useState([]);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
@@ -19,35 +20,59 @@ function TelaNotas() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const getNotas = async () => {
+        try {
+            let response = await fetch("http://localhost:3000/notas");
+            if (response.ok) {
+                let json = await response.json();
+                setNotas(json);
+            } else {
+                console.error("Erro ao buscar notas");
+            }
+        } catch (error) {
+            console.error("Erro na requisição:", error);
+        }
+    };
+
+    useEffect(() => {
+        getNotas();
+    }, []);
+
     return (
-        <>
-            <div className="global-tela">
-                <div className="notas-root">
-                    <main className={`tela ${isMobile ? 'mobile' : 'desktop'}`}>
-                        <MenuLateral />
+        <div className="global-tela">
+            <div className="notas-root">
+                <main className={`tela ${isMobile ? 'mobile' : 'desktop'}`}>
+                    <MenuLateral />
+                    <div className={`tela-container ${isMobile ? 'mobile-container' : ''}`}>
+                        <CabecalhoTopo />
+                        <div
+                            className="fundo-conteudo"
+                            style={{ flexDirection: isMobile ? 'column' : 'row' }}>
+                            <ListaNotas
+                                notas={notas}
+                                atualizarNotas={getNotas}
+                                vizualisarNota={setNotaSelecionada}
+                            />
 
-                        {/* ÁREA PRINCIPAL */}
-                        <div className={`tela-container ${isMobile ? 'mobile-container' : ''}`}>
-                            <CabecalhoTopo />
-                            <div 
-                                className="fundo-conteudo" 
-                                style={{ flexDirection: isMobile ? 'column' : 'row' }}>
-                                <ListaNotas vizualisarNota={(nota) => setNotaSelecionada(nota)} />
-
-                                {notaSelecionada == null ? (
-                                    <h1 className='selecioarnota'>selecione uma nota</h1>
-                                ) : (
-                                    <>
-                                        <NotaDetalhe recebaNota={notaSelecionada} />
-                                        <AcoesNota />
-                                    </>
-                                )}
-                            </div>
+                            {notaSelecionada == null ? (
+                                <h1 className='selecioarnota'>selecione uma nota</h1>
+                            ) : (
+                                <>
+                                    <NotaDetalhe recebaNota={notaSelecionada} />
+                                    <AcoesNota
+                                        notaSelecionada={notaSelecionada}
+                                        aoFecharANota={() => {
+                                            setNotaSelecionada(null);
+                                            getNotas();
+                                        }}
+                                    />
+                                </>
+                            )}
                         </div>
-                    </main>
-                </div>
+                    </div>
+                </main>
             </div>
-        </>
+        </div>
     );
 }
 

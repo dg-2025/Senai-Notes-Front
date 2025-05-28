@@ -1,45 +1,65 @@
-/* === DETALHES DA NOTA (CENTRO) === */
+/* === DETALHE DA NOTA (ÁREA CENTRAL) === */
 .notas-root .nota-detalhe {
   width: 55%;
   padding: 20px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  background-color: #f9f9f9;
 }
 
+/* Imagem no topo */
 .notas-root .img-conteudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 20vh;
-  background-image: url("./imagens/teset.jpg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
+  height: 25vh;
   margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #e9e9e9;
+  position: relative;
+  overflow: hidden;
 }
 
+/* A imagem de visualização */
+.img-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Input escondido por cima da imagem */
+.notas-root .img-conteudo input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Título da nota */
 .notas-root .titulo-conteudo {
   width: 100%;
-  height: auto;
   margin-bottom: 10px;
   background-color: white;
   border-bottom: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 .notas-root .titulo-nota {
   border: none;
   background-color: transparent;
   outline: none;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   font-family: 'Inter';
   color: #111;
+  width: 100%;
 }
 
+/* Tags + Última edição */
 .notas-root .tags-da-anotacao {
   width: 100%;
   background-color: white;
@@ -52,11 +72,8 @@
   display: flex;
   align-items: center;
   font-family: 'Inter';
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 8px 0;
 }
-
-
 
 .notas-root .info-nota {
   display: flex;
@@ -76,8 +93,11 @@
   border: none;
   font-size: 13px;
   color: #555;
+  background-color: transparent;
+  width: 100%;
 }
 
+/* Área de texto da nota */
 .notas-root .conteudo-anotacao {
   width: 100%;
   background-color: white;
@@ -96,29 +116,30 @@
   font-size: 14px;
   font-family: 'Inter';
   border: none;
+  resize: none;
 }
 
-/* === BOTÕES INFERIORES === */
+/* Botões inferiores */
 .notas-root .botoes-inferior {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
-.notas-root .botao1 {
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+.notas-root .botao1,
+.notas-root .botao2 {
+  padding: 12px 24px;
   font-family: 'Inter';
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  background-color: #2563eb;
-  color: #ffffff;
-  margin-left: 10px;
   margin-right: 10px;
   transition: all 0.2s;
+}
+
+.notas-root .botao1 {
+  background-color: #2563eb;
+  color: #fff;
 }
 
 .notas-root .botao1:hover {
@@ -128,34 +149,13 @@
 }
 
 .notas-root .botao2 {
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-family: 'Inter';
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
   background-color: white;
   color: #111;
-  margin-left: 10px;
-  margin-right: 10px;
-  transition: all 0.2s;
 }
 
 .notas-root .botao2:hover {
   background-color: #eb2525;
   color: white;
   border: none;
-  transition: all 0.2s;
-}
-
-.notas-root .file_input {
-
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  width: 0px;
-  height: 0px;
-  
+  cursor: pointer;
 }
