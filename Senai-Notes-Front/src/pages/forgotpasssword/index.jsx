@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../assets/imgs/logowhite.png';
 import '../../assets/styles/global.css';
+import '../forgotpasssword/style.css';
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');

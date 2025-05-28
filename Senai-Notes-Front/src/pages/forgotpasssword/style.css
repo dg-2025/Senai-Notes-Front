@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f8fafc; /* cinza claro */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Logo e título superior */
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centraliza horizontalmente os filhos (inclusive imagem) */
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-left: 80px;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto; /* Garante centralização da imagem */
+}
+
+/* Título e subtítulo */
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Input de email */
+input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  outline: none;
+}
+
+input[type="email"]::placeholder {
+  color: #9ca3af;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+form label {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  color: #374151; /* cinza escuro */
+  margin-bottom: 6px;
+}
