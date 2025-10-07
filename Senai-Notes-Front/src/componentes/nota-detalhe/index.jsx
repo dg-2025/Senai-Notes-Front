@@ -1,21 +1,24 @@
 import '../../assets/styles/global.css';
 import './style.css';
-import Tag from '../../assets/ImgNotas/Tag.svg';
+import TagIcon from '../../assets/ImgNotas/Tag.svg';
 import CircleClock from '../../assets/ImgNotas/Circle Clock.svg';
 import { useEffect, useState } from 'react';
 
 function NotaDetalhe({ recebaNota }) {
-    const [title, setTitle] = useState("");
-    const [tag, setTags] = useState("");
-    const [description, setDescription] = useState("");
-    const [imageBase64, setImageBase64] = useState("");
+    const [titulo, setTitulo] = useState("");
+    const [tagsTexto, setTagsTexto] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [imagemBase64, setImagemBase64] = useState("");
+
+    const token = localStorage.getItem("meuToken");
+    const userId = localStorage.getItem("meuId");
 
     useEffect(() => {
         if (recebaNota) {
-            setTitle(recebaNota.title);
-            setTags(recebaNota.tags.join(", "));
-            setDescription(recebaNota.description);
-            setImageBase64(recebaNota.image); // carrega imagem já salva
+            setTitulo(recebaNota.titulo || "");
+            setTagsTexto((recebaNota.tags || []).join(", "));
+            setDescricao(recebaNota.descricao || "");
+            setImagemBase64(recebaNota.imagem || "");
         }
     }, [recebaNota]);
 
@@ -25,31 +28,44 @@ function NotaDetalhe({ recebaNota }) {
 
         const leitor = new FileReader();
         leitor.onloadend = () => {
-            setImageBase64(leitor.result); // salva como base64
+            setImagemBase64(leitor.result);
         };
-
         leitor.readAsDataURL(arquivo);
     };
 
     const salvarNota = async () => {
-        const response = await fetch(`http://localhost:3000/notas/${recebaNota.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                ...recebaNota,
-                title,
-                description,
-                tags: tag.split(",").map(t => t.trim()),
-                image: imageBase64 || recebaNota.image || "assets/sample.png",
-                date: new Date().toISOString()
-            })
-        });
+        const url = recebaNota?.id
+            ? `http://localhost:8080/api/notas/${recebaNota.id}`
+            : `http://localhost:8080/api/notas`;
 
-        if (response.ok) {
-            alert("Salvo com sucesso");
-            window.location.reload(); // força ListaNotas a recarregar
-        } else {
-            alert("Erro ao salvar");
+        const metodo = recebaNota?.id ? "PUT" : "POST";
+
+        try {
+            const response = await fetch(url, {
+                method: metodo,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idUsuario: parseInt(userId),
+                    titulo,
+                    descricao,
+                    imagem: imagemBase64 || "",
+                    tags: tagsTexto.split(",").map(t => t.trim()),
+                    arquivado: recebaNota?.arquivado || false
+                })
+            });
+
+            if (response.ok) {
+                alert("Nota salva com sucesso!");
+                window.location.reload();
+            } else {
+                const errorText = await response.text();
+                alert("Erro ao salvar nota: " + errorText);
+            }
+        } catch (err) {
+            alert("Erro de rede: " + err.message);
         }
     };
 
@@ -58,7 +74,7 @@ function NotaDetalhe({ recebaNota }) {
             <section className="conteudo">
                 <label className="img-conteudo">
                     <img
-                        src={imageBase64 || "assets/sample.png"}
+                        src={imagemBase64 || "assets/sample.png"}
                         alt="Imagem da nota"
                         className="img-preview"
                     />
@@ -70,38 +86,45 @@ function NotaDetalhe({ recebaNota }) {
                         type="text"
                         className="titulo-nota"
                         placeholder="Título"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
+                        value={titulo}
+                        onChange={e => setTitulo(e.target.value)}
                     />
                 </div>
 
                 <div className="tags-da-anotacao">
                     <div className="linha-tags">
-                        <p className="info-nota"><img src={Tag} /> Tags:</p>
+                        <p className="info-nota"><img src={TagIcon} alt="" /> Tags:</p>
                         <input
                             type="text"
                             className="info-dado"
-                            placeholder="tag"
-                            value={tag}
-                            onChange={e => setTags(e.target.value)}
+                            placeholder="tag1, tag2"
+                            value={tagsTexto}
+                            onChange={e => setTagsTexto(e.target.value)}
                         />
                     </div>
                     <div className="linha-tags">
-                        <p className="info-nota"><img src={CircleClock} /> Última edição:</p>
-                        <p className="info-dado">{new Date().toLocaleDateString()}</p>
+                        <p className="info-nota"><img src={CircleClock} alt="" /> Última edição:</p>
+                        <p className="info-dado">
+                            {recebaNota?.ultimaEdicao
+                                ? new Date(recebaNota.ultimaEdicao).toLocaleDateString()
+                                : "Agora"}
+                        </p>
                     </div>
                 </div>
 
                 <div className="conteudo-anotacao">
                     <p className="texto-nota">
-                        <textarea value={description} onChange={e => setDescription(e.target.value)} />
+                        <textarea
+                            value={descricao}
+                            onChange={e => setDescricao(e.target.value)}
+                        />
                     </p>
                 </div>
             </section>
 
             <div className="botoes-inferior">
                 <button className="botao1" onClick={salvarNota}>Salvar nota</button>
-                <button className="botao2">Cancelar</button>
+                <button className="botao2" onClick={() => window.location.reload()}>Cancelar</button>
             </div>
         </div>
     );

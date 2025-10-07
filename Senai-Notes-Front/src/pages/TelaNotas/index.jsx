@@ -12,6 +12,7 @@ function TelaNotas() {
     const [notas, setNotas] = useState([]);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+    // 🔁 Detectar tamanho da tela
     useEffect(() => {
         function handleResize() {
             setIsMobile(window.innerWidth <= 768);
@@ -20,20 +21,38 @@ function TelaNotas() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // 🔁 Buscar notas do usuário logado
     const getNotas = async () => {
+        const email = localStorage.getItem("meuId");
+        const token = localStorage.getItem("meuToken");
+
+        if (!email || !token) {
+            alert("Usuário não autenticado.");
+            return;
+        }
+
         try {
-            let response = await fetch("http://localhost:3000/notas");
+            const response = await fetch(`http://localhost:8080/api/notas/nota-por-email/${email}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
             if (response.ok) {
-                let json = await response.json();
+                const json = await response.json();
                 setNotas(json);
             } else {
-                console.error("Erro ao buscar notas");
+                const error = await response.text();
+                console.error("Erro ao buscar notas:", error);
+                alert("Erro ao carregar notas.");
             }
         } catch (error) {
             console.error("Erro na requisição:", error);
+            alert("Erro na conexão com o servidor.");
         }
     };
 
+    // Carregar notas ao abrir tela
     useEffect(() => {
         getNotas();
     }, []);
@@ -48,6 +67,7 @@ function TelaNotas() {
                         <div
                             className="fundo-conteudo"
                             style={{ flexDirection: isMobile ? 'column' : 'row' }}>
+
                             <ListaNotas
                                 notas={notas}
                                 atualizarNotas={getNotas}
@@ -55,7 +75,7 @@ function TelaNotas() {
                             />
 
                             {notaSelecionada == null ? (
-                                <h1 className='selecioarnota'>selecione uma nota</h1>
+                                <h1 className='selecioarnota'>Selecione uma nota</h1>
                             ) : (
                                 <>
                                     <NotaDetalhe recebaNota={notaSelecionada} />

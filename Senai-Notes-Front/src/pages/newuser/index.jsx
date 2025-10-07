@@ -15,7 +15,7 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Usuario", {
+      const response = await fetch("http://localhost:8080/api/usuarios/cadastras", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,6 +26,7 @@ function SignUp() {
           senha: password,
         }),
       });
+
 
       if (response.ok) {
         alert("Cadastro realizado com sucesso!");

@@ -14,7 +14,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("https://apisenainotes404.azurewebsites.net/api/Usuario/login", {
+      const response = await fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -26,21 +26,12 @@ function Login() {
       });
 
       if (response.ok) {
-        let data;
-        try {
-          data = await response.json();
-        } catch {
-          alert("Resposta inválida do servidor.");
-          return;
-        }
+        const data = await response.json();
 
         const token = data?.token;
-        const userId = data?.cliente?.userId;
+        const userId = data?.usuario?.id;
 
         if (token && userId) {
-
-          console.log("meuToken" + token)
-
           localStorage.setItem("meuToken", token);
           localStorage.setItem("meuId", userId);
           alert("Login realizado com sucesso!");
